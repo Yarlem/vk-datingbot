@@ -67,7 +67,7 @@ class BotInterface():
                                 photo_string += f'photo{photo["owner_id"]}_{photo["id"]},'
                             self.offset += 50
                     else:
-                        self.worksheets = self.vk_tools.search_worksheet(self.params, self.offset)
+                        #self.worksheets = self.vk_tools.search_worksheet(self.params, self.offset)
                         if self.params['city'] is None:
                             self.message_send(event.user_id, 'Укажите город поиска')
                             for i in self.longpoll.listen():
@@ -89,7 +89,7 @@ class BotInterface():
                                     self.params['year'] = int(year)
                                     break
 
-
+                        self.worksheets = self.vk_tools.search_worksheet(self.params, self.offset)
                         worksheet = self.check_worksheet(event)
                         photos = self.vk_tools.get_photos(worksheet['id'])
                         photo_string = ''
